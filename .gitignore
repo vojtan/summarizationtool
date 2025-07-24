@@ -101,3 +101,12 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Temporary files
+temp_*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
