@@ -41,10 +41,22 @@ class DecinPDFMonitor:
         # URLs to monitor
         self.urls_to_monitor = [
             "https://www.mmdecin.cz/usneseni-rm/rok-2025"
-            # "https://www.mmdecin.cz/usneseni-zm/2025-7",
-            # "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/kontrolni-vybor/2025-9",
-            # "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/financni-vybor/2025-8",
-            # "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise"
+            "https://www.mmdecin.cz/usneseni-zm/2025-7",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/kontrolni-vybor/2025-9",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/financni-vybor/2025-8",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/sportovni-komise-1",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/skolska-komise-1",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/kulturni-komise-1",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-urbanismus-a-architekturu-1",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-posuzovani-navrhu-na-udeleni-ceny-statutarniho-mesta-decin-1",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/dopravni-komise-1",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-dolni-zleb/2025-11",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-kresice/2025-12",
+            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-maxicky/2025-13"
+            
+            
+            
         ]
         
         # File to track processed PDFs
