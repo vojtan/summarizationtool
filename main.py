@@ -40,23 +40,20 @@ class DecinPDFMonitor:
         
         # URLs to monitor
         self.urls_to_monitor = [
-            "https://www.mmdecin.cz/usneseni-rm/rok-2025"
-            "https://www.mmdecin.cz/usneseni-zm/2025-7",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/kontrolni-vybor/2025-9",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/financni-vybor/2025-8",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/sportovni-komise-1",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/skolska-komise-1",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/kulturni-komise-1",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-urbanismus-a-architekturu-1",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-posuzovani-navrhu-na-udeleni-ceny-statutarniho-mesta-decin-1",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/dopravni-komise-1",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-dolni-zleb/2025-11",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-kresice/2025-12",
-            "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-maxicky/2025-13"
-            
-            
-            
+            {"title": "Usnesení rady města", "url": "https://www.mmdecin.cz/usneseni-rm/rok-2025"},
+            {"title": "Usnesení zastupitelstva města", "url": "https://www.mmdecin.cz/usneseni-zm/2025-7"},
+            {"title": "Kontrolní výbor", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/kontrolni-vybor/2025-9"},
+            {"title": "Finanční výbor", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/financni-vybor/2025-8"},
+            {"title": "Sociální komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise"},
+            {"title": "Sportovní komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/sportovni-komise-1"},
+            {"title": "Školská komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/skolska-komise-1"},
+            {"title": "Kulturní komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/kulturni-komise-1"},
+            {"title": "Komise pro urbanismus a architekturu", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-urbanismus-a-architekturu-1"},
+            {"title": "Komise pro posuzování návrhů na cenu města", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-posuzovani-navrhu-na-udeleni-ceny-statutarniho-mesta-decin-1"},
+            {"title": "Dopravní komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/dopravni-komise-1"},
+            {"title": "Osadní výbor Dolní Žleb", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-dolni-zleb/2025-11"},
+            {"title": "Osadní výbor Křešice", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-kresice/2025-12"},
+            {"title": "Osadní výbor Maxičky", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-maxicky/2025-13"}
         ]
         
         # File to track processed PDFs
@@ -206,18 +203,21 @@ class DecinPDFMonitor:
         all_new_pdfs = []
         
         # Check each monitored URL
-        for url in self.urls_to_monitor:
-            print(f"Checking URL: {url}")
-            pdf_links = self.get_pdf_links_from_page(url)
+        for item in self.urls_to_monitor:
+            print(f"Checking URL: {item['url']}")
+            pdf_links = self.get_pdf_links_from_page(item['url'])
             
             # Filter out already processed PDFs
             new_pdfs = [pdf for pdf in pdf_links if pdf['url'] not in self.processed_pdfs]
             
             if new_pdfs:
-                print(f"Found {len(new_pdfs)} new PDFs on {url}")
+                print(f"Found {len(new_pdfs)} new PDFs on {item['url']}")
+                # Add the source title to each new PDF entry
+                for pdf in new_pdfs:
+                    pdf['source_title'] = item['title']
                 all_new_pdfs.extend(new_pdfs)
             else:
-                print(f"No new PDFs found on {url}")
+                print(f"No new PDFs found on {item['url']}")
             
             # Small delay between requests
             time.sleep(2)
@@ -236,6 +236,7 @@ class DecinPDFMonitor:
                 
                 if not pdf_text:
                     print(f"Could not extract text from {pdf_info['url']}")
+                    self.processed_pdfs.add(pdf_info['url'])
                     continue
                 
                 # Generate summary
@@ -243,7 +244,7 @@ class DecinPDFMonitor:
                 
                 # Format message for Telegram
                 message = f"""
-<b>Název:</b> {pdf_info['title']}
+<b>Název:</b> {pdf_info['source_title']}
 <b>PDF:</b> <a href="{pdf_info['url']}">Stáhnout dokument</a>
 <b>Souhrn:</b>
 {summary}
