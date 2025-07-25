@@ -155,9 +155,6 @@ class DecinPDFMonitor:
     def generate_summary(self, text: str, title: str) -> str:
         """Generate summary using Google Gemini"""
         try:
-            # Limit text length to avoid token limits
-            if len(text) > 15000:  # Rough character limit
-                text = text[:15000] + "..."
             
             prompt = f"""
             Prosím vytvoř stručný souhrn následujícího dokumentu z města Děčín v češtině:
