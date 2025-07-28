@@ -236,13 +236,12 @@ class DecinPDFMonitor:
                 
                 if not pdf_text:
                     print(f"Could not extract text from {pdf_info['url']}")
-                    self.processed_pdfs.add(pdf_info['url'])
-                    continue
-                
-                # Generate summary
-                summary = self.generate_summary(pdf_text, pdf_info['title'])
-                
-                # Format message for Telegram
+                    summary = "Byl přidán nový dokument, nepodařilo se ale získat text z dokumentu. "
+                else:
+                    # Generate summary
+                    summary = self.generate_summary(pdf_text, pdf_info['title'])
+
+                    # Format message for Telegram
                 message = f"""
 <b>Název:</b> {pdf_info['source_title']}
 <b>PDF:</b> <a href="{pdf_info['url']}">Stáhnout dokument</a>
