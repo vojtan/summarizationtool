@@ -37,7 +37,7 @@ class DecinPDFMonitor:
         genai.configure(api_key=self.config.gemini_api_key)
         self.model = genai.GenerativeModel('gemini-1.5-flash')
         # File to track processed PDFs
-        self.tracking_file = "data\\processed_pdfs.json"
+        self.tracking_file = "processed_pdfs.json"
 
         # Load previously processed PDFs
         self.processed_pdfs = self.load_processed_pdfs()

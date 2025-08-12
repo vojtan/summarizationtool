@@ -38,8 +38,8 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add data/processed_pdfs.json
-        git add data/rss_feed.xml
+        git add processed_pdfs.json
+        git add rss_feed.xml
         git commit -m "Update processed_pdfs.json" || echo "No changes to commit"
         git push
       env:

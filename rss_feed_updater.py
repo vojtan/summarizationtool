@@ -4,7 +4,7 @@ from pathlib import Path
 
 class RssFeedUpdater:
     def __init__(self):
-        self.feed_file = "data/rss_feed.xml"
+        self.feed_file = "rss_feed.xml"
     def update_feed(self, all_new_pdfs):        
         """Add new PDF items to the RSS feed"""
         if not all_new_pdfs:
