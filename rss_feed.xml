@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:p="http://world.episerver.com/feeds/EpiserverRSS20.xsd">
-    <channel>
-        <title>Novinky z komisí a výborů z Děčína</title>
-        <link>http://www.mmdecin.cz</link>
-        <description />
-        <item>
-            <title>Sociální komise</title>
-            <link>
+<channel>
+<title>Novinky z komisí a výborů z Děčína</title>
+<link>http://www.mmdecin.cz</link>
+<description/>
+<item>
+<title>Sociální komise</title>
+<link>
                 https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise/6703-2025-zapis-03-socialni-a-zdravotni-komise-dne-20250226/file</link>
-            <pubDate>Tue, 12 Aug 2025 09:37:39 +0000</pubDate>
-            <description>Sociální a zdravotní komise města Děčín se dne 26.2.2025 usnesla na zřízení
+<pubDate>Tue, 12 Aug 2025 09:37:39 +0000</pubDate>
+<description>Sociální a zdravotní komise města Děčín se dne 26.2.2025 usnesla na zřízení
                 sociálního fondu pro řešení krizových situací občanů (zavedení rozpočtové položky v
                 rozpočtu odboru OSV pro příští rok). Zamítla žádost Nábytkové banky Ústeckého kraje
                 o finanční dar (45 000 Kč) pro rok 2024 kvůli dlouhým čekacím lhůtám a problematické
@@ -20,6 +20,7 @@
                 poskytl v mrazech úkryt 14 osobám bez domova. Hledají se nové prostory pro
                 K-centrum. Situace v DS Křešice je stabilizovaná.
             </description>
-        </item>
-    </channel>
+</item>
+<item><title>Sportovní komise</title><link>https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/sportovni-komise-1/6763-2025-zapis-04-sportovni-komise-20250414/file</link><pubDate>Tue, 12 Aug 2025 08:12:34 +0000</pubDate><description>Sportovní komise města Děčín se dne 14.4.2025 sešla k projednání dotací, změn dotačního programu a dalších záležitostí.  Schválila sníženou dotaci 30 000 Kč pro Sportovní klub Děčín na ME vodního póla 2025 ve Slovinsku (původně požadováno 45 000 Kč).  Projednala a schválila  návrhy změn dotačního programu na rok 2026, včetně prodloužení termínu podávání žádostí.  Komise navrhla změnu názvu akce „Sportovec roku“ na „Sportovci roku města Děčín“ s postupnou implementací.  Diskuse se vedla i o výstavbě sportovní haly Vokolkova, jejíž projekt byl Komisí pro urbanismus a architekturu zastaven.  Sportovní komise plánuje společné jednání s touto komisí k nalezení alternativních řešení.  Další jednání komise je plánováno na 21.5.2025.
+</description></item></channel>
 </rss>
