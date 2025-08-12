@@ -215,7 +215,7 @@ class DecinPDFMonitor:
                 continue
         
 
-        # self.notifier.send_messages_to_telegram(all_new_pdfs)
+        self.notifier.send_messages_to_telegram(all_new_pdfs)
         self.rss_feed.update_feed(all_new_pdfs)
         self.save_processed_pdfs()
         print(f"Processed {len(all_new_pdfs)} new PDFs")
