@@ -11,13 +11,14 @@ import requests
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Set
-import re
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin
 import time
-
 from bs4 import BeautifulSoup
 import PyPDF2
 import google.generativeai as genai
+from config import AppConfig
+from rss_feed_updater import RssFeedUpdater
+from telegram_notifier import TelegramNotifier
 
 # Load environment variables from .env file if it exists
 try:
@@ -27,40 +28,23 @@ except ImportError:
     # dotenv not installed, skip loading .env file
     pass
 
+
 class DecinPDFMonitor:
     def __init__(self):
-        # Configuration from environment variables
-        self.telegram_token = os.getenv('TELEGRAM_BOT_TOKEN')
-        self.telegram_chat_id = os.getenv('TELEGRAM_CHAT_ID')
-        self.gemini_api_key = os.getenv('GEMINI_API_KEY')
-        
+        self.config = AppConfig()
+
         # Configure Gemini
-        genai.configure(api_key=self.gemini_api_key)
+        genai.configure(api_key=self.config.gemini_api_key)
         self.model = genai.GenerativeModel('gemini-1.5-flash')
-        
-        # URLs to monitor
-        self.urls_to_monitor = [
-            {"title": "Usnesení rady města", "url": "https://www.mmdecin.cz/usneseni-rm/rok-2025"},
-            {"title": "Usnesení zastupitelstva města", "url": "https://www.mmdecin.cz/usneseni-zm/2025-7"},
-            {"title": "Kontrolní výbor", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/kontrolni-vybor/2025-9"},
-            {"title": "Finanční výbor", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/financni-vybor/2025-8"},
-            {"title": "Sociální komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise"},
-            {"title": "Sportovní komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/sportovni-komise-1"},
-            {"title": "Školská komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/skolska-komise-1"},
-            {"title": "Kulturní komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/kulturni-komise-1"},
-            {"title": "Komise pro urbanismus a architekturu", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-urbanismus-a-architekturu-1"},
-            {"title": "Komise pro posuzování návrhů na cenu města", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-posuzovani-navrhu-na-udeleni-ceny-statutarniho-mesta-decin-1"},
-            {"title": "Dopravní komise", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/dopravni-komise-1"},
-            {"title": "Osadní výbor Dolní Žleb", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-dolni-zleb/2025-11"},
-            {"title": "Osadní výbor Křešice", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-kresice/2025-12"},
-            {"title": "Osadní výbor Maxičky", "url": "https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/osadni-vybor-maxicky/2025-13"}
-        ]
-        
         # File to track processed PDFs
-        self.tracking_file = "processed_pdfs.json"
-        
+        self.tracking_file = "data\\processed_pdfs.json"
+
         # Load previously processed PDFs
         self.processed_pdfs = self.load_processed_pdfs()
+
+        # Create TelegramNotifier instance
+        self.notifier = TelegramNotifier()
+        self.rss_feed = RssFeedUpdater()
         
     def load_processed_pdfs(self) -> Set[str]:
         """Load list of previously processed PDF URLs"""
@@ -167,7 +151,7 @@ class DecinPDFMonitor:
             - Finanční záležitosti (pokud jsou zmíněny)
             - Termíny a data
             
-            Maximální délka: 3000 znaku.
+            Maximální délka: 3000 znaků.
             """
             
             response = self.model.generate_content(prompt)
@@ -179,22 +163,7 @@ class DecinPDFMonitor:
             lines = text.split('\n')
             summary_lines = [line.strip() for line in lines[:10] if line.strip()]
             return f"Automatický souhrn dokumentu '{title}':\n\n" + '\n'.join(summary_lines)
-    
-    def send_telegram_message(self, message: str):
-        """Send message to Telegram chat"""
-        try:
-            url = f"https://api.telegram.org/bot{self.telegram_token}/sendMessage"
-            data = {
-                'chat_id': self.telegram_chat_id,
-                'text': message,
-                'parse_mode': 'HTML'
-            }
-            response = requests.post(url, data=data, timeout=30)
-            response.raise_for_status()
-            print("Message sent to Telegram successfully")
-            
-        except Exception as e:
-            print(f"Error sending Telegram message: {e}")
+
     
     def process_new_pdfs(self):
         """Main function to check for new PDFs and process them"""
@@ -203,7 +172,7 @@ class DecinPDFMonitor:
         all_new_pdfs = []
         
         # Check each monitored URL
-        for item in self.urls_to_monitor:
+        for item in self.config.urls_to_monitor:
             print(f"Checking URL: {item['url']}")
             pdf_links = self.get_pdf_links_from_page(item['url'])
             
@@ -230,31 +199,12 @@ class DecinPDFMonitor:
         for pdf_info in all_new_pdfs:
             try:
                 print(f"Processing: {pdf_info['title']} - {pdf_info['url']}")
-                
-                # Download and extract text
                 pdf_text = self.download_pdf_content(pdf_info['url'])
-                
                 if not pdf_text:
                     print(f"Could not extract text from {pdf_info['url']}")
-                    summary = "Byl přidán nový dokument, nepodařilo se ale získat text z dokumentu. "
+                    pdf_info['summary'] = "Byl přidán nový dokument, nepodařilo se ale získat text z dokumentu. "
                 else:
-                    # Generate summary
-                    summary = self.generate_summary(pdf_text, pdf_info['title'])
-
-                    # Format message for Telegram
-                message = f"""
-<b>Název:</b> {pdf_info['source_title']}
-<b>PDF:</b> <a href="{pdf_info['url']}">Stáhnout dokument</a>
-<b>Souhrn:</b>
-{summary}
-
-
-                """.strip()
-                
-                # Send to Telegram
-                self.send_telegram_message(message)
-                
-                # Mark as processed
+                    pdf_info['summary'] = self.generate_summary(pdf_text, pdf_info['title'])
                 self.processed_pdfs.add(pdf_info['url'])
                 
                 # Small delay between processing
@@ -264,9 +214,12 @@ class DecinPDFMonitor:
                 print(f"Error processing PDF {pdf_info['url']}: {e}")
                 continue
         
-        # Save updated tracking file
+
+        # self.notifier.send_messages_to_telegram(all_new_pdfs)
+        self.rss_feed.update_feed(all_new_pdfs)
         self.save_processed_pdfs()
         print(f"Processed {len(all_new_pdfs)} new PDFs")
+
 
 def main():
     """Main entry point"""
