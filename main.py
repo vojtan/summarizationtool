@@ -187,7 +187,6 @@ class DecinPDFMonitor:
                 for pdf in new_pdfs:
                     pdf['source_title'] = item['title']
                 all_new_pdfs.extend(new_pdfs)
-                break
             else:
                 print(f"No new PDFs found on {item['url']}")
             

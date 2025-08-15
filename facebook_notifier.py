@@ -53,11 +53,6 @@ class FacebookNotifier:
     def create_posts(self, posts):
         """Send a notification message to the configured Facebook page.
         """
-        # Load user token
-        
-
-
-        print(f"User token: {self.USER_TOKEN}")
         page_token = self.get_page_access_token(self.USER_TOKEN, self.PAGE_ID)
 
         for post in posts:
