@@ -33,6 +33,7 @@ class FacebookNotifier:
         except requests.RequestException as e:
             print(f"Error fetching page access token: {e}")
             print(f"Response content: {getattr(resp, 'text', None)}")
+            print(f"User token: {user_token}")
             raise
         resp = requests.get(url, params={"access_token": user_token})
         resp.raise_for_status()
