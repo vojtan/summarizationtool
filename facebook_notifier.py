@@ -26,6 +26,14 @@ class FacebookNotifier:
         Fetch long-lived Page access token from user token.
         """
         url = "https://graph.facebook.com/v23.0/me/accounts"
+        try:
+            resp = requests.get(url, params={"access_token": user_token})
+            resp.raise_for_status()
+            data = resp.json()
+        except requests.RequestException as e:
+            print(f"Error fetching page access token: {e}")
+            print(f"Response content: {getattr(resp, 'text', None)}")
+            raise
         resp = requests.get(url, params={"access_token": user_token})
         resp.raise_for_status()
         data = resp.json()
