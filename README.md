@@ -7,6 +7,7 @@ Sledované jsou tyto orgány města:
  - Zápisy z komisí rady města
  - Zápisy z osadních výborů
  - Zápisy z kontrolního a finančního výboru
+
 Automaticky vytvořené sourhny  můžete najít zde:
  - Facebooková stránka https://www.facebook.com/profile.php?id=61579342680818
  - Telegramový kanál https://t.me/zapisydecin
