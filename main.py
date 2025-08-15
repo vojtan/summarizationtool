@@ -17,6 +17,7 @@ from bs4 import BeautifulSoup
 import PyPDF2
 import google.generativeai as genai
 from config import AppConfig
+from facebook_notifier import FacebookNotifier
 from rss_feed_updater import RssFeedUpdater
 from telegram_notifier import TelegramNotifier
 
@@ -45,6 +46,7 @@ class DecinPDFMonitor:
         # Create TelegramNotifier instance
         self.notifier = TelegramNotifier()
         self.rss_feed = RssFeedUpdater()
+        self.facebook_notifier = FacebookNotifier()
         
     def load_processed_pdfs(self) -> Set[str]:
         """Load list of previously processed PDF URLs"""
@@ -217,6 +219,7 @@ class DecinPDFMonitor:
 
         self.notifier.send_messages_to_telegram(all_new_pdfs)
         self.rss_feed.update_feed(all_new_pdfs)
+        self.facebook_notifier.create_posts(all_new_pdfs)
         self.save_processed_pdfs()
         print(f"Processed {len(all_new_pdfs)} new PDFs")
 
