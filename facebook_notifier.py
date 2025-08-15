@@ -15,11 +15,6 @@ class FacebookNotifier:
         self.PAGE_ID = config.fb_page_id
 
 
-    def load_user_token(self):
-        """
-        Loads user token from from env.
-        """
-        return self.USER_TOKEN, datetime.utcnow() + timedelta(days=59)
 
     def get_page_access_token(self, user_token, page_id):
         """
@@ -59,11 +54,11 @@ class FacebookNotifier:
         """Send a notification message to the configured Facebook page.
         """
         # Load user token
-        user_token, expires_at = self.load_user_token()
+        
 
-        print(f" Token valid until {expires_at.isoformat()}")
 
-        page_token = self.get_page_access_token(user_token, self.PAGE_ID)
+        print(f"User token: {self.USER_TOKEN}")
+        page_token = self.get_page_access_token(self.USER_TOKEN, self.PAGE_ID)
 
         for post in posts:
             message = (
