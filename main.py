@@ -36,7 +36,7 @@ class DecinPDFMonitor:
 
         # Configure Gemini
         genai.configure(api_key=self.config.gemini_api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.model = genai.GenerativeModel(self.config.gemini_model_name)
         # File to track processed PDFs
         self.tracking_file = "processed_pdfs.json"
 
@@ -138,24 +138,8 @@ class DecinPDFMonitor:
     def generate_summary(self, text: str, title: str) -> str:
         """Generate summary using Google Gemini"""
         try:
-            
-            prompt = f"""
-            Prosím vytvoř stručný souhrn následujícího dokumentu z města Děčín v češtině:
-            
-            Název dokumentu: {title}
-            
-            Text dokumentu:
-            {text}
-            
-            Souhrn by měl obsahovat:
-            - Hlavní body a rozhodnutí
-            - Důležité informace pro občany
-            - Finanční záležitosti (pokud jsou zmíněny)
-            - Termíny a data
-            
-            Maximální délka: 3000 znaků.
-            """
-            
+
+            prompt = self.config.gemini_prompt.format(title=title, text=text)
             response = self.model.generate_content(prompt)
             return response.text
             

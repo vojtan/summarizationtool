@@ -36,6 +36,9 @@ jobs:
         FB_APP_SECRET: ${{ secrets.FB_APP_SECRET }}
         FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
         FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+        GEMINI_MODEL_NAME: ${{ secrets.GEMINI_MODEL_NAME }}
+        GEMINI_PROMPT: ${{ secrets.GEMINI_PROMPT }}
+        URLS_TO_MONITOR: ${{ secrets.URLS_TO_MONITOR }}
       run: python main.py
 
     - name: Commit and push changes
