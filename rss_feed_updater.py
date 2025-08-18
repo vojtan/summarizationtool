@@ -33,7 +33,7 @@ class RssFeedUpdater:
             item.append(link)
             item.append(pub_date)
             item.append(description)
-            channel.append(item)
+            channel.insert(0, item)
 
         # Save updated RSS feed
         with open(self.feed_file, 'w', encoding='utf-8') as f:
