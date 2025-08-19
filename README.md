@@ -11,7 +11,7 @@ Sledované jsou tyto orgány města:
 Automaticky vytvořené sourhny  můžete najít zde:
 - [Facebooková stránka](https://www.facebook.com/profile.php?id=61579342680818)
 - [Telegramový kanál](https://t.me/zapisydecin)
-- [RSS kanál](https://raw.githubusercontent.com/vojtan/summarizationtool/refs/heads/main/rss_feed.xml)
+- [RSS kanál](https://vojtan.github.io/summarizationtool/rss_feed.xml)
 - [Web města](https://www.mmdecin.cz/novinky-z-organu-mesta)
  
 
