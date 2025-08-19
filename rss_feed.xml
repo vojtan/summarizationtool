@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:p="http://world.episerver.com/feeds/EpiserverRSS20.xsd">
-<channel><item><title>Sportovní komise</title><link>https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/sportovni-komise-1/6854-2025-zapis-06-sportovni-komise-20250623/file</link><pubDate>Mon, 18 Aug 2025 10:46:17 +0000</pubDate><description>Sportovní komise města Děčín se 23.6.2025 sešla a projednala několik bodů.  Byla prezentována zpráva z jednání Finančního výboru o činnosti komise (včetně katalogu sportu a webu decinsportuje.cz) a proběhla diskuse o výstavbě nové multifunkční sportovní haly (možné lokality: Vokolkova, Práce, Řezuz).  Komise doporučila Radě města dotaci 15 000 Kč pro Klub vodních motoristů Děčín na reprezentaci ČR na MS v Maďarsku 2025.  Dále se diskutovalo o dotačních programech kraje, aktualizaci webu Děčín sportuje a projektu „Trenéři do škol“, který by se měl rozšířit a propagovat.  Další jednání komise je naplánováno na 1.9.2025.  Robert Landa připraví zprávu o výstavbě haly pro komisi urbanismu, Ing. Tutko zprávu o rozšíření projektu „Trenéři do škol“.
-</description></item>
-<title>Novinky z komisí a výborů z Děčína</title>
-<link>http://www.mmdecin.cz</link>
-<description/>
-<item>
-<title>Kulturní komise</title>
-<link>
-                https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/kulturni-komise-1/6852-2025-zapis-05-kulturni-komise-20250623/file</link>
-<pubDate>Mon, 23 Jun 2025 11:45:07 +0000</pubDate>
-<description>Kulturní komise města Děčín (23.6.2025) projednala dotační program na
+    <channel>
+        <item>
+            <title>Sportovní komise</title>
+            <link>https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/sportovni-komise-1/6854-2025-zapis-06-sportovni-komise-20250623/file</link>
+            <pubDate>Mon, 18 Aug 2025 10:46:17 +0000</pubDate>
+            <description>Sportovní komise města Děčín se 23.6.2025 sešla a projednala několik bodů.
+                Byla prezentována zpráva z jednání Finančního výboru o činnosti komise (včetně
+                katalogu sportu a webu decinsportuje.cz) a proběhla diskuse o výstavbě nové
+                multifunkční sportovní haly (možné lokality: Vokolkova, Práce, Řezuz). Komise
+                doporučila Radě města dotaci 15 000 Kč pro Klub vodních motoristů Děčín na
+                reprezentaci ČR na MS v Maďarsku 2025. Dále se diskutovalo o dotačních programech
+                kraje, aktualizaci webu Děčín sportuje a projektu „Trenéři do škol“, který by se měl
+                rozšířit a propagovat. Další jednání komise je naplánováno na 1.9.2025. Robert Landa
+                připraví zprávu o výstavbě haly pro komisi urbanismu, Ing. Tutko zprávu o rozšíření
+                projektu „Trenéři do škol“.
+            </description>
+        </item>
+        <title>Novinky z komisí a výborů z Děčína</title>
+        <link>http://www.mmdecin.cz</link>
+        <description />
+        <item>
+            <title>Kulturní komise</title>
+            <link>https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/kulturni-komise-1/6852-2025-zapis-05-kulturni-komise-20250623/file</link>
+            <pubDate>Mon, 23 Jun 2025 11:45:07 +0000</pubDate>
+            <description>Kulturní komise města Děčín (23.6.2025) projednala dotační program na
                 kulturu pro rok 2026. Doporučila podávání žádostí ve dvou vlnách: 1. vlna
                 1.12.-16.12.2025, 2. vlna 13.4.-28.4.2026. Žádost Miroslava Graclíka (400 000 Kč na
                 knihu o festivalu Děčínská kotva) byla zamítnuta pro nízkou relevanci a vysoký
@@ -18,13 +32,12 @@
                 očekávanou účast. Zásady poskytování finanční podpory zůstávají v platnosti s
                 drobnou aktualizací. Další jednání komise proběhne v září 2025.
             </description>
-</item>
-<item>
-<title>Komise pro urbanismus a architekturu</title>
-<link>
-                https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-urbanismus-a-architekturu-1/6808-2025-zapis-komise-pro-urbanismus-a-architekturu-20250505/file</link>
-<pubDate>Mon, 05 May 2025 11:45:07 +0000</pubDate>
-<description>Komise pro urbanismus a architekturu Děčína (5.5.2025) projednala 11 bodů.
+        </item>
+        <item>
+            <title>Komise pro urbanismus a architekturu</title>
+            <link>https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-urbanismus-a-architekturu-1/6808-2025-zapis-komise-pro-urbanismus-a-architekturu-20250505/file</link>
+            <pubDate>Mon, 05 May 2025 11:45:07 +0000</pubDate>
+            <description>Komise pro urbanismus a architekturu Děčína (5.5.2025) projednala 11 bodů.
                 Doporučila radě města: instalaci nových hodin na Tyršově ulici (design jako v
                 Podmoklech); úpravu parkoviště u zámeckého rybníka (obrubníky, zatravnění, zeleň);
                 převedení problému parkování u VZP na Dopravní komisi; vytvoření pracovního týmu pro
@@ -37,13 +50,12 @@
                 projednány, ale zmíněna je možnost dotace na zastřešení zastávky MHD. Další jednání
                 komise bude upřesněno.
             </description>
-</item>
-<item>
-<title>Dopravní komise</title>
-<link>
-                https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/dopravni-komise-1/6833-2025-zapis-06-dopravni-komise-dne-20250604/file</link>
-<pubDate>Wed, 04 Jun 2025 11:45:07 +0000</pubDate>
-<description>Dopravní komise Děčína (4.6.2025) projednala několik bodů. Doporučila radě
+        </item>
+        <item>
+            <title>Dopravní komise</title>
+            <link>https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/dopravni-komise-1/6833-2025-zapis-06-dopravni-komise-dne-20250604/file</link>
+            <pubDate>Wed, 04 Jun 2025 11:45:07 +0000</pubDate>
+            <description>Dopravní komise Děčína (4.6.2025) projednala několik bodů. Doporučila radě
                 města instalaci úsekového měření rychlosti u Libverdy po předchozím skrytém měření
                 rychlosti. Zamítla obousměrný cyklistický provoz v Liberecké ulici pro nedostatek
                 prostoru. Potvrdila zachování krátkodobého parkování u VZP, řešeného již dříve. Dále
@@ -52,13 +64,12 @@
                 doprava 24.-29.6.2025, 22:00-04:00) a zajistit informovanost veřejnosti o dopravě na
                 Tyršově mostě. Další zasedání je 2.7.2025. Finanční záležitosti nebyly zmíněny.
             </description>
-</item>
-<item>
-<title>Sociální komise</title>
-<link>
-                https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise/6834-2025-zapis-06-socialni-a-zdravotni-komise-dne-20250611/file</link>
-<pubDate>Wed, 11 Jun 2025 07:32:53 +0000</pubDate>
-<description>Sociální a zdravotní komise města Děčín se 11. 6. 2025 sešla k projednání
+        </item>
+        <item>
+            <title>Sociální komise</title>
+            <link>https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/socialni-komise/6834-2025-zapis-06-socialni-a-zdravotni-komise-dne-20250611/file</link>
+            <pubDate>Wed, 11 Jun 2025 07:32:53 +0000</pubDate>
+            <description>Sociální a zdravotní komise města Děčín se 11. 6. 2025 sešla k projednání
                 dotací a dalších záležitostí. Schválila změnu účelu dotace pro organizaci Indigo
                 Děčín z.s. (původně tábor s pobytem, nyní příměstský tábor), ale s navrženým
                 snížením dotace z 30 000 Kč na 18 000 Kč. Diskuse se vedla o transparentnosti
@@ -67,6 +78,6 @@
                 probíhající rekonstrukci AD Benešovská a aktivitách na podporu pěstounství (nízký
                 počet pěstounů v Děčíně). Další jednání komise je plánováno na 8. 9. 2025.
             </description>
-</item>
-</channel>
+        </item>
+    </channel>
 </rss>
