@@ -45,9 +45,9 @@ class DecinPDFMonitor:
         self.processed_pdfs = self.load_processed_pdfs()
 
         # Create TelegramNotifier instance
-        # self.notifier = TelegramNotifier()
-        # self.rss_feed = RssFeedUpdater()
-        # self.facebook_notifier = FacebookNotifier()
+        self.notifier = TelegramNotifier()
+        self.rss_feed = RssFeedUpdater()
+        self.facebook_notifier = FacebookNotifier()
         
     def load_processed_pdfs(self) -> Set[str]:
         """Load list of previously processed PDF URLs"""
@@ -202,10 +202,10 @@ class DecinPDFMonitor:
                 continue
         
 
-        # self.notifier.send_messages_to_telegram(all_new_pdfs)
-        # self.rss_feed.update_feed(all_new_pdfs)
-        # self.facebook_notifier.create_posts(all_new_pdfs)
-        # self.save_processed_pdfs()
+        self.notifier.send_messages_to_telegram(all_new_pdfs)
+        self.rss_feed.update_feed(all_new_pdfs)
+        self.facebook_notifier.create_posts(all_new_pdfs)
+        self.save_processed_pdfs()
         print(f"Processed {len(all_new_pdfs)} new PDFs")
 
 
