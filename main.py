@@ -7,6 +7,7 @@ Monitors city council URLs for new PDF documents and posts summaries to Telegram
 import os
 import json
 import hashlib
+from turtle import title
 import requests
 from datetime import datetime
 from pathlib import Path
@@ -44,9 +45,9 @@ class DecinPDFMonitor:
         self.processed_pdfs = self.load_processed_pdfs()
 
         # Create TelegramNotifier instance
-        self.notifier = TelegramNotifier()
-        self.rss_feed = RssFeedUpdater()
-        self.facebook_notifier = FacebookNotifier()
+        # self.notifier = TelegramNotifier()
+        # self.rss_feed = RssFeedUpdater()
+        # self.facebook_notifier = FacebookNotifier()
         
     def load_processed_pdfs(self) -> Set[str]:
         """Load list of previously processed PDF URLs"""
@@ -90,7 +91,6 @@ class DecinPDFMonitor:
                     # Convert relative URLs to absolute
                     full_url = urljoin(url, href)
                     title = link.get_text(strip=True) or link.get('title', '')
-                    
                     pdf_links.append({
                         'url': full_url,
                         'title': title,
@@ -167,6 +167,9 @@ class DecinPDFMonitor:
             
             if new_pdfs:
                 print(f"Found {len(new_pdfs)} new PDFs on {item['url']}")
+                for pdf in new_pdfs:
+                    pdf['source_title'] = item['title']
+
                 all_new_pdfs.append(new_pdfs[0]) #processing pdf one per day
                 break
             else:
@@ -199,10 +202,10 @@ class DecinPDFMonitor:
                 continue
         
 
-        self.notifier.send_messages_to_telegram(all_new_pdfs)
-        self.rss_feed.update_feed(all_new_pdfs)
-        self.facebook_notifier.create_posts(all_new_pdfs)
-        self.save_processed_pdfs()
+        # self.notifier.send_messages_to_telegram(all_new_pdfs)
+        # self.rss_feed.update_feed(all_new_pdfs)
+        # self.facebook_notifier.create_posts(all_new_pdfs)
+        # self.save_processed_pdfs()
         print(f"Processed {len(all_new_pdfs)} new PDFs")
 
 
