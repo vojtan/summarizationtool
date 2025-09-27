@@ -109,7 +109,7 @@ def main():
     
     try:
         monitor = DecinPDFMonitor()
-        content = monitor.download_pdf_content("https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-komisi-rady-mesta/volebni-obdobi-2022-2026/komise-pro-urbanismus-a-architekturu-1/6960-2025-zapis-komise-pro-urbanismus-a-architekturu-20250825/file")
+        content = monitor.download_pdf_content("https://www.mmdecin.cz/ostatni-dokumenty/zastupitelstvo-a-rada-mesta-decin/zapisy-z-jednani-vyboru-zastupitelstva-mesta/financni-vybor/2025-8/6966-6-2025-zapis-financniho-vyboru-ze-dne-08-09-2025/file")
         test =  monitor.generate_summary(content, "")
         print(test)
         return 0

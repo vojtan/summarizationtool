@@ -167,10 +167,8 @@ class DecinPDFMonitor:
             
             if new_pdfs:
                 print(f"Found {len(new_pdfs)} new PDFs on {item['url']}")
-                # Add the source title to each new PDF entry
-                for pdf in new_pdfs:
-                    pdf['source_title'] = item['title']
-                all_new_pdfs.extend(new_pdfs)
+                all_new_pdfs.append(new_pdfs[0]) #processing pdf one per day
+                break
             else:
                 print(f"No new PDFs found on {item['url']}")
             
