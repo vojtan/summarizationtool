@@ -192,7 +192,7 @@ class DecinPDFMonitor:
                     print(f"Could not extract text from {pdf_info['url']}")
                     pdf_info['summary'] = "Byl přidán nový dokument, nepodařilo se ale získat text z dokumentu. "
                 else:
-                    pdf_info['summary'] = "test" #self.generate_summary(pdf_text, pdf_info['title'])
+                    pdf_info['summary'] = self.generate_summary(pdf_text, pdf_info['title'])
                 self.processed_pdfs.add(pdf_info['url'])
                 
                 # Small delay between processing
