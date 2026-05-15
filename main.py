@@ -158,6 +158,7 @@ class DecinPDFMonitor:
         all_new_pdfs = []
         
         # Check each monitored URL
+        print(f"Urls to monitor: {self.config.urls_to_monitor}")
         for item in self.config.urls_to_monitor:
             print(f"Checking URL: {item['url']}")
             pdf_links = self.get_pdf_links_from_page(item['url'])
