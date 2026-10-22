@@ -172,7 +172,7 @@ class DecinPDFMonitor:
                     pdf['source_title'] = item['title']
 
                 all_new_pdfs.append(new_pdfs[0]) #processing pdf one per day
-                break
+                # break
             else:
                 print(f"No new PDFs found on {item['url']}")
             
@@ -192,7 +192,8 @@ class DecinPDFMonitor:
                     print(f"Could not extract text from {pdf_info['url']}")
                     pdf_info['summary'] = "Byl přidán nový dokument, nepodařilo se ale získat text z dokumentu. "
                 else:
-                    pdf_info['summary'] = self.generate_summary(pdf_text, pdf_info['title'])
+                    # pdf_info['summary'] = self.generate_summary(pdf_text, pdf_info['title'])
+                    pdf_info['summary'] = 'dummy'
                 self.processed_pdfs.add(pdf_info['url'])
                 
                 # Small delay between processing
