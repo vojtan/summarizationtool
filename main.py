@@ -12,7 +12,7 @@ import requests
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict, Set
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 import time
 from bs4 import BeautifulSoup
 import PyPDF2
@@ -30,14 +30,18 @@ except ImportError:
     # dotenv not installed, skip loading .env file
     pass
 
+# Keep sending off while catching up. Set False when ready to publish new PDFs.
+MARK_EXISTING_ONLY = True
+
 
 class DecinPDFMonitor:
     def __init__(self):
         self.config = AppConfig()
 
         # Configure Gemini
-        genai.configure(api_key=self.config.gemini_api_key)
-        self.model = genai.GenerativeModel(self.config.gemini_model_name)
+        if not MARK_EXISTING_ONLY:
+            genai.configure(api_key=self.config.gemini_api_key)
+            self.model = genai.GenerativeModel(self.config.gemini_model_name)
         # File to track processed PDFs
         self.tracking_file = "processed_pdfs.json"
 
@@ -64,13 +68,14 @@ class DecinPDFMonitor:
         """Save list of processed PDF URLs"""
         try:
             data = {
-                'processed_pdfs': list(self.processed_pdfs),
+                'processed_pdfs': sorted(self.processed_pdfs),
                 'last_updated': datetime.now().isoformat()
             }
             with open(self.tracking_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
         except Exception as e:
             print(f"Error saving tracking file: {e}")
+            raise
     
     def get_pdf_links_from_page(self, url: str) -> List[Dict[str, str]]:
         """Extract PDF links from a webpage"""
@@ -90,6 +95,9 @@ class DecinPDFMonitor:
                 if href.lower().endswith('/file'):
                     # Convert relative URLs to absolute
                     full_url = urljoin(url, href)
+                    if any(folder.lower().startswith('archiv-')
+                           for folder in urlsplit(full_url).path.split('/')[:-1]):
+                        continue
                     title = link.get_text(strip=True) or link.get('title', '')
                     pdf_links.append({
                         'url': full_url,
@@ -101,6 +109,8 @@ class DecinPDFMonitor:
             
         except Exception as e:
             print(f"Error fetching PDF links from {url}: {e}")
+            if MARK_EXISTING_ONLY:
+                raise  # Do not report a completed catch-up if any page failed.
             return []
     
     def download_pdf_content(self, pdf_url: str) -> str:
@@ -162,6 +172,11 @@ class DecinPDFMonitor:
         for item in self.config.urls_to_monitor:
             print(f"Checking URL: {item['url']}")
             pdf_links = self.get_pdf_links_from_page(item['url'])
+
+            if MARK_EXISTING_ONLY:
+                self.processed_pdfs.update(pdf['url'] for pdf in pdf_links)
+                time.sleep(2)
+                continue
             
             # Filter out already processed PDFs
             new_pdfs = [pdf for pdf in pdf_links if pdf['url'] not in self.processed_pdfs]
@@ -179,6 +194,11 @@ class DecinPDFMonitor:
             # Small delay between requests
             time.sleep(2)
         
+        if MARK_EXISTING_ONLY:
+            self.save_processed_pdfs()
+            print(f"Catch-up complete: {len(self.processed_pdfs)} URLs recorded; nothing sent")
+            return
+
         if not all_new_pdfs:
             print("No new PDFs found across all monitored URLs")
             return
@@ -214,7 +234,9 @@ class DecinPDFMonitor:
 def main():
     """Main entry point"""
     # Validate environment variables
-    required_vars = ['TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'GEMINI_API_KEY']
+    required_vars = ['URLS_TO_MONITOR']
+    if not MARK_EXISTING_ONLY:
+        required_vars += ['TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID', 'GEMINI_API_KEY']
     missing_vars = [var for var in required_vars if not os.getenv(var)]
     
     if missing_vars:
@@ -224,6 +246,8 @@ def main():
     
     try:
         monitor = DecinPDFMonitor()
+        if not monitor.config.urls_to_monitor:
+            raise ValueError("No monitored URLs configured")
         monitor.process_new_pdfs()
         return 0
     except Exception as e:
